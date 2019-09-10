@@ -1,0 +1,21 @@
+form {
+  .formGroup {
+    margin-bottom: 1em;
+  }
+  .errorPlaceHolder {
+    color: red;
+    font-style: 0.8em;
+  }
+  button{
+    background: blue;
+    width: 10em;
+    border-radius: 50%;
+    padding: 1em;
+    color: white;
+    text-transform: uppercase;
+    &.inactive {
+      background: rgba(128,128,128,1);
+      color: darkslategrey;
+    }
+  }
+}
