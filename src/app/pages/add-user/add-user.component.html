@@ -1,84 +1,58 @@
+<a role="button" [routerLink]="['']"> Accueil </a>
 <div style="background-image: linear-gradient(coral , white);font-family: 'Times New Roman', Times, serif;text-align: center"><br><br>
-<H1>Création d'un nouvel utilisateur</H1>
-<div style="border:solid;margin:20pt; text-align: left; background-image: linear-gradient(to right, coral , wheat); border-radius: 5pt;padding-left: 10pt;padding-top: 2pt">
+<H1>Création d'une nouvelle tâche</H1>
+<div style="display: inline-block; border:solid;margin:20pt; text-align: center; background-image: linear-gradient(to right, coral , wheat); border-radius: 5pt;padding-left: 10pt;padding-right: 10pt;padding-top: 10pt">
 <form [formGroup]="userForm">
   <div class="formGroup">
     <input
     type="text"
     id="name"
-    formControlName="name"
-    placeholder="Nom de l'utilisateur"
+    formControlName="libelle"
+    placeholder="Libelle"
     >
-    <div class="errorPlaceHolder" *ngIf="name.errors && name.touched">
-    Le nom doit faire au moins 3 caractères
+    <div class="errorPlaceHolder" *ngIf="libelle.errors && libelle.touched">
+    Le libelle doit faire au moins 3 caractères
     </div>
   </div>
   <div class="formGroup">
-    <input
-    type="text"
-    id="firstName"
-    formControlName="firstName"
-    placeholder="Prénom de l'utilisateur"
+    <select
+    id="categorie"
+    formControlName="categorie"
+    placeholder="Catégorie de la tâche"
     >
-    <div class="errorPlaceHolder" *ngIf="firstName.errors && firstName.touched">
-    Le prénom doit faire au moins 3 caractères
+    <option>PRO</option>
+    <option>PERSO</option>
+    </select>
+    <div class="errorPlaceHolder" *ngIf="categorie.errors && categorie.touched">
+    La catégorie doit faire au moins 3 caractères
     </div>
   </div>
   <div class="formGroup">
     <input
     type="date"
-    id="dateNaiss"
-    formControlName="dateNaiss"
-    placeholder="Date de naissance de l'utilisateur"
+    id="dateEcheance"
+    formControlName="dateEcheance"
+    placeholder="Date d'échéance de la tâche"
     >
-    <div class="errorPlaceHolder" *ngIf="dateNaiss.errors && dateNaiss.touched">
-    <p *ngIf="birthDate.errors.isLowerThan">La date d'anniversaire doit être (forcément...) inférieure à la date du jour</p>
-    <p *ngIf="birthDate.errors.required">La date de naissance est obligatoire</p>
+    <div class="errorPlaceHolder" *ngIf="dateEcheance.errors && dateEcheance.touched">
+    <p *ngIf="dateEcheance.errors.isLowerThan">La date d'échéance doit être (forcément...) postérieure à la date du jour</p>
     </div>
   </div>
   <div class="formGroup">
     <input
     type="text"
-    id="adresse"
-    formControlName="adresse"
-    placeholder="Adresse de l'utilisateur"
+    id="duree"
+    formControlName="duree"
+    placeholder="Durée en heures"
     >
-    <div class="errorPlaceHolder" *ngIf="adresse.errors && adresse.touched">
-    L'adresse est obligatoire
-    </div>
-  </div>
-  <div class="formGroup">
-    <input
-    type="text"
-    id="CP"
-    formControlName="CP"
-    placeholder="Code postal de l'utilisateur"
-    >
-    <div class="errorPlaceHolder" *ngIf="CP.errors && CP.touched">
-    <p *ngIf="CP.errors.required">Le code postal est obligatoire</p>
-    <p *ngIf="CP.errors.minlength">Le code postal est constitué au minimum de 5 chiffres</p>
-    <p *ngIf="CP.errors.maxlength">Le code postal est constitué de 5 chiffres</p>
-    <p *ngIf="CP.errors.pattern">On a dit 5 CHIIIIFFFFFFRES !!!!</p>
-    </div>
-  </div>
-  <div class="formGroup">
-    <input
-    type="text"
-    id="ville"
-    formControlName="ville"
-    placeholder="Ville de l'utilisateur"
-    >
-    <div class="errorPlaceHolder" *ngIf="ville.errors && ville.touched">
-      La ville est obligatoire
+    <div class="errorPlaceHolder" *ngIf="duree.errors && duree.touched">
+    <p *ngIf="duree.errors.pattern">On a dit 5 CHIIIIFFFFFFRES !!!!</p>
     </div>
   </div><div class="formGroup">
-    <button id="add" (click)="submit()" [className]="userForm.invalid ? 'inactive' : ''" [disabled]="userForm.invalid">
+    <button id="add" (click)="submit()" [routerLink]="['']">
     Ajouter
     </button>
   </div>
 </form>
 </div>
 </div>
-<a role="button" [routerLink]="['']"> Accueil </a>
-<br>
-{{ userForm.value | json }}

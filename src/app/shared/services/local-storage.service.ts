@@ -21,4 +21,8 @@ export class LocalStorageService {
   public remove(key: string) {
     localStorage.removeItem(key);
   }
+
+  public vider(): void {
+    localStorage.clear();
+  }
 }

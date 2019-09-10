@@ -1,12 +1,12 @@
 <div style="background-image: linear-gradient(coral , white);font-family: 'Times New Roman', Times, serif;text-align: center"><br><br>
-<H1>Liste de mes utilisateurs</H1>
+<H1>Bienvenue sur votre liste de tâches, nous sommes le {{ dateDuJour | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}</H1>
 <div *ngFor="let user of users" (click)="toggleStatus(user)" style="border:solid;margin:20pt; text-align: left; background-image: linear-gradient(to right, coral , yellow); border-radius: 5pt;padding-left: 10pt;padding-top: 2pt">
-{{ user.firstName}} <strong>{{ user.lastName | uppercase }}</strong>
-,  né(e) le : {{ user.birthDate | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}
-<address [hidden]="!user.isAddressHidden">
+{{ user.libelle}}
+<address [hidden]="!user.isDetailsHidden">
 <ul id = "detail">
-  <li>{{ user.address}}</li>
-  <li>{{ user.zipCode}} {{ user.city}}</li>
+  <li><strong>{{ user.categorie | uppercase }}</strong></li>
+  <li> Durée en heures : {{ user.duree}}</li>
+  <li> échoit le : {{ user.dateEcheance | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}</li>
   <div style="text-align: right;padding-right: 10px">
    <input type="button" value="Action" >
    <button id="remove" (click)="remove(user)">
@@ -18,4 +18,5 @@
 </div>
 </div>
 <!-- Bouton pour afficher le formulaire de création-->
-<a role="button" [routerLink]="['/add']"> Ajouter un nouvel utilisateur </a>
+<a role="button" [routerLink]="['/add']"> Ajouter une nouvelle tâche </a><br><br>
+<button id="remove" (click)="vider()">Vider la liste</button><br><br>

@@ -37,6 +37,10 @@ export class UserCollection {
     return this;
   }
 
+  public vider(): void {
+    this.storage.vider();
+  }
+
   /**
    * Removes a user to the collection
    */

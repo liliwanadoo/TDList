@@ -22,14 +22,17 @@ export class BirthDateValidatorService {
       this.http.get(
         'http://worldclockapi.com/api/json/utc/now'
       ).subscribe((response: any) => {
-        console.log('Hola, today is : ' + response.currentDateTime);
+
         // My logic here
         const serverDate = new Date(response.currentDateTime);
         const userDate = new Date(dateCtrl.value);
 
+        console.log('Hola, today is : ' + response.currentDateTime + ' vs ' + userDate);
         if (userDate < serverDate) {
+          console.log('ko');
           resolve({isLowerThan: false}); //Take promise...
         } else {
+          console.log('ok');
           resolve(null);
         }
     });
