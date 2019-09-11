@@ -1,22 +1,30 @@
 <div style="background-image: linear-gradient(coral , white);font-family: 'Times New Roman', Times, serif;text-align: center"><br><br>
 <H1>Bienvenue sur votre liste de tâches, nous sommes le {{ dateDuJour | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}</H1>
+<!-- Bouton pour afficher le formulaire de mise à jour -->
+    <app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [oUser]="aUser" [hidden]="!hasUser()"></app-update-user>
+    <!--<app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [hidden]="!hasUser()"></app-update-user>-->
+
 <div *ngFor="let user of users" (click)="toggleStatus(user)" style="border:solid;margin:20pt; text-align: left; background-image: linear-gradient(to right, coral , yellow); border-radius: 5pt;padding-left: 10pt;padding-top: 2pt">
 {{ user.libelle}}
 <address [hidden]="!user.isDetailsHidden">
 <ul id = "detail">
   <li><strong>{{ user.categorie | uppercase }}</strong></li>
   <li> Durée en heures : {{ user.duree}}</li>
-  <li> échoit le : {{ user.dateEcheance | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}</li>
+  <li> échoit le : {{ user.birthDate | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}</li>
   <div style="text-align: right;padding-right: 10px">
-   <input type="button" value="Action" >
-   <button id="remove" (click)="remove(user)">
+   <button class="button-update" style="border-radius: 50%" id="update" (click)="loadFormFor(user)">
+    Modifier
+    </button>
+   <button id="remove" style="border-radius: 50%" (click)="remove(user)">
     Supprimer
     </button>
+      <!-- Bouton pour afficher le formulaire de mise à jour -->
+    <!-- <app-update-user></app-update-user> -->
    </div>
 </ul>
 </address>
 </div>
 </div>
-<!-- Bouton pour afficher le formulaire de création-->
+<!-- Bouton pour afficher le formulaire de création -->
 <a role="button" [routerLink]="['/add']"> Ajouter une nouvelle tâche </a><br><br>
-<button id="remove" (click)="vider()">Vider la liste</button><br><br>
+<button id="remove" [routerLink]="['']" (click)="vider()">Vider la liste</button><br><br>

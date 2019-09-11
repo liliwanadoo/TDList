@@ -51,8 +51,8 @@ export class AddUserComponent implements OnInit {
   return this.userForm.controls.categorie;
 }
 
-public get dateEcheance(): AbstractControl {
-  return this.userForm.controls.dateEcheance;
+public get birthDate(): AbstractControl {
+  return this.userForm.controls.birthDate;
 }
 
 public get duree(): AbstractControl {
@@ -71,11 +71,12 @@ public get duree(): AbstractControl {
         [Validators.required,
           Validators.minLength(3)]
       ],
-      dateEcheance: [
+      birthDate: [
         '',
       ],
       duree: [
         '',
+        Validators.pattern('^(0|[0-9]*)$')
       ]
     });
   }
@@ -87,13 +88,20 @@ public get duree(): AbstractControl {
       const brandNewUser: User = new User();
       brandNewUser.libelle = this.libelle.value;
       brandNewUser.categorie = this.categorie.value;
-      brandNewUser.dateEcheance = this.dateEcheance.value;
+      brandNewUser.birthDate = this.birthDate.value;
       brandNewUser.duree = this.duree.value;
 
     // Second... (special thx for Felice) persist this user into persistent object
       this.collection.add(brandNewUser);
       this.toastr.success('La tâche ' + brandNewUser.libelle + ' est créée', 'Info');
+
+      this.libelle.reset();
+      this.categorie.reset();
+      this.birthDate.reset();
+      this.duree.reset();
+
     // Third go back to home...
+    // this.router.navigate(['']);
     // Cherry on cake : put a toast to inform the end user...
     } else {
       Object.keys(this.userForm.controls).forEach(key => {

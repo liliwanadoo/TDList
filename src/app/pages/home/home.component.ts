@@ -3,26 +3,35 @@ import { UserCollection } from 'src/app/models/user-collection';
 import { User } from 'src/app/models/user';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, Validators } from '@angular/forms';
+import { UpdateUserComponent } from '../update-user/update-user.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['../../app.component.scss']
 })
 export class HomeComponent implements OnInit {
   public dateDuJour: any;
+  userForm: any;
 
   public constructor(
-    private collection: UserCollection, private toastr: ToastrService, private http: HttpClient
+    private collection: UserCollection, private toastr: ToastrService, private http: HttpClient,
+    private formBuilder: FormBuilder
   ) {
     this.http.get(
       'http://worldclockapi.com/api/json/utc/now'
     ).subscribe((response: any) => {this.dateDuJour = response.currentDateTime; });
   }
 
-   public users: Array<User>;
+  /**
+   * The user who was selected for update
+   */
+  public aUser: User;
 
-   public title: String = new String('Tâches');
+  public users: Array<User>;
+
+  public title: String = new String('Tâches');
 
    /**throw new Error('Method not implemented.');
     * Invoked just after the component constructor
@@ -31,6 +40,7 @@ export class HomeComponent implements OnInit {
      this.users = this.collection.getCollection();
      // or... this users = this.collection.users;
    }
+
   /**
    * Invoke repositionary method to remove the 'task'
    * @param user Task to remove
@@ -40,10 +50,27 @@ export class HomeComponent implements OnInit {
      this.toastr.success('La tâche ' + user.libelle + ' est supprimée', 'Info');
    }
 
-    /**
-   * Empty the local storage
-   * @param user Task to remove
+  /**
+   * Check if there is any User to update
+   * @return boolean
    */
+   public hasUser(): boolean {
+    return this.aUser ? true : false;
+  }
+
+  /**
+   * Manage the update form for a User
+   * @param user User object to be updated
+   */
+  public loadFormFor(user: User) {
+    this.aUser = user;
+    this._setForm();
+  }
+   /**
+    * Empty the local storage
+    * @param user Task to remove
+    * tslint:disable-next-line: jsdoc-format
+    */
   public vider(): void {
     this.collection.vider();
     this.toastr.success('Toutes les tâches sont supprimées', 'Info');
@@ -54,4 +81,38 @@ export class HomeComponent implements OnInit {
      user.isDetailsHidden = !user.isDetailsHidden;
    }
 
+   public receiveUser(user: User) {
+     if (user) {
+      this.collection.update(this.aUser, user);
+      // this.collection.findUser(this.oUser);
+
+     }
+    // this.aUser = $event;
+    this.aUser = null;
+   }
+
+   private _setForm(): void {
+     if (this.aUser) {
+       // instanciate a new FormGroup using a FormBuilder
+       this.userForm = this.formBuilder.group({
+        libelle: [
+          this.aUser.libelle,
+          [Validators.required,
+          Validators.minLength(3)]
+        ],
+        categorie: [
+          this.aUser.categorie,
+          [Validators.required,
+            Validators.minLength(3)]
+        ],
+        birthDate: [
+          this.aUser.birthDate
+        ],
+        duree: [
+          this.aUser.duree,
+          Validators.pattern('^(0|[0-9]*)$')
+        ]
+      });
+     }
+   }
 }

@@ -30,11 +30,32 @@ export class UserCollection {
     return this;
   }
 
+public findUser(user: User) {
+  const index: number = this._users.indexOf(user, 0);
+  console.log('mon index ancien ' + index);
+}
+
   /**
    * update a user to the collection
    */
-  public update(user: User): UserCollection {
-    return this;
+  public update(oldUser: User, newUser: User): UserCollection {
+        // Gets the index value of "User" in the array
+        const index: number = this._users.indexOf(oldUser, 0);
+        console.log('mon index ancien ' + index);
+        const new_index: number = this._users.indexOf(newUser, 0);
+        console.log('mon nouvel index ' + new_index);
+
+        // If found (index <> -1)
+        if (index !== -1) {
+          console.log('mon index ' + index);
+          this._users.splice(index, 1); // Removes the index
+          this._users.push(newUser);  // Adds the user
+        }
+
+        // Invoke the persistant method
+        this.storage.set('users', this._users);
+
+        return this;
   }
 
   public vider(): void {
@@ -47,6 +68,7 @@ export class UserCollection {
   public remove(user: User): UserCollection {
     // Gets the index value of "User" in the array
     const index: number = this._users.indexOf(user, 0);
+    console.log('mon nouvel index ' + index);
 
     // If found (index <> -1)
     if (index !== -1) {

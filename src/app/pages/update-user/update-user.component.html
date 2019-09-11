@@ -1,8 +1,6 @@
-<a role="button" [routerLink]="['']"> Accueil </a>
-<div style="background-image: linear-gradient(coral , white);font-family: 'Times New Roman', Times, serif;text-align: center"><br><br>
-<H1>Création d'une nouvelle tâche</H1>
 <div style="display: inline-block; border:solid;margin:20pt; text-align: center; background-image: linear-gradient(to right, coral , wheat); border-radius: 5pt;padding-left: 10pt;padding-right: 10pt;padding-top: 10pt">
-<form [formGroup]="userForm">
+<p>Vous allez modifier : </p>
+<form [formGroup]="userForm" *ngIf="userForm">
   <div class="formGroup">
     <input
     type="text"
@@ -34,9 +32,6 @@
     formControlName="birthDate"
     placeholder="Date d'échéance de la tâche"
     >
-    <div class="errorPlaceHolder" *ngIf="birthDate.errors && birthDate.touched">
-    <p *ngIf="birthDate.errors.isLowerThan">La date d'échéance doit être (forcément...) postérieure à la date du jour</p>
-    </div>
   </div>
   <div class="formGroup">
     <input
@@ -49,13 +44,13 @@
     <p *ngIf="duree.errors.pattern">On a dit 5 CHIIIIFFFFFFRES !!!!</p>
     </div>
   </div><div class="formGroup">
-    <button id="add" (click)="submit()" [routerLink]="['/add']">
-    Ajouter des utilisateurs en chaine
+    <button id="add" (click)="update()" [disabled]="userForm.invalid" [routerLink]="['']">
+    Valider et revenir à l'accueil
     </button>
-    <button id="add" (click)="submit()" [routerLink]="['']">
-    Ajouter et revenir à l'accueil
-    </button>
+    <div class="formGroup">
+    <button id="cancel" (click)="dismiss()"  [routerLink]="['']">
+    Annuler et revenir à l'accueil
+    </button></div>
   </div>
 </form>
-</div>
 </div>

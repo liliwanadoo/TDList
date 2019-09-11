@@ -19,12 +19,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
 import { HomeComponent } from './pages/home/home.component';
+import { UpdateUserComponent } from './pages/update-user/update-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddUserComponent,
-    HomeComponent
+    HomeComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

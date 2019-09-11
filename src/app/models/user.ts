@@ -13,12 +13,13 @@ export class User {
   public set categorie(value: string) {
     this._categorie = value;
   }
-  private _dateEcheance: Date;
-  public get dateEcheance(): Date {
-    return this._dateEcheance;
+  private _birthDate: Date;
+
+  public get birthDate(): Date {
+    return this._birthDate;
   }
-  public set dateEcheance(value: Date) {
-    this._dateEcheance = value;
+  public set birthDate(value: Date) {
+    this._birthDate = value;
   }
   private _duree: BigInteger;
   public get duree(): BigInteger {
