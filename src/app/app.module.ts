@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
 import { HomeComponent } from './pages/home/home.component';
 import { UpdateUserComponent } from './pages/update-user/update-user.component';
+import { MaterialModule } from './shared/ui/material/material.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UpdateUserComponent } from './pages/update-user/update-user.component';
     HttpClientModule,
     CommonModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(),
+    MaterialModule // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

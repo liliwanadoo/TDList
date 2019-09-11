@@ -1,19 +1,22 @@
-<div style="display: inline-block; border:solid;margin:20pt; text-align: center; background-image: linear-gradient(to right, coral , wheat); border-radius: 5pt;padding-left: 10pt;padding-right: 10pt;padding-top: 10pt">
-<p>Vous allez modifier : </p>
+<div class="conteneur">
+<p><i><h2>Vous êtes dans la modification d'une tâche : </h2></i></p>
 <form [formGroup]="userForm" *ngIf="userForm">
-  <div class="formGroup">
+  <mat-form-field class="example-full-width">
     <input
+    matInput
     type="text"
     id="libelle"
     formControlName="libelle"
-    placeholder="Libelle"
+    placeholder="Nom de la tâche"
     >
     <div class="errorPlaceHolder" *ngIf="libelle.errors && libelle.touched">
     Le libelle doit faire au moins 3 caractères
     </div>
-  </div>
-  <div class="formGroup">
+  </mat-form-field>
+  <br>
+  <div>
     <select
+
     id="categorie"
     formControlName="categorie"
     placeholder="Catégorie de la tâche"
@@ -24,17 +27,19 @@
     <div class="errorPlaceHolder" *ngIf="categorie.errors && categorie.touched">
     La catégorie doit faire au moins 3 caractères
     </div>
-  </div>
-  <div class="formGroup">
+   </div>
+  <mat-form-field>
     <input
+    matInput
     type="date"
     id="birthDate"
     formControlName="birthDate"
     placeholder="Date d'échéance de la tâche"
     >
-  </div>
-  <div class="formGroup">
+   </mat-form-field>
+  <mat-form-field>
     <input
+    matInput
     type="text"
     id="duree"
     formControlName="duree"
@@ -43,14 +48,15 @@
     <div class="errorPlaceHolder" *ngIf="duree.errors && duree.touched">
     <p *ngIf="duree.errors.pattern">On a dit 5 CHIIIIFFFFFFRES !!!!</p>
     </div>
-  </div><div class="formGroup">
-    <button id="add" (click)="update()" [disabled]="userForm.invalid" [routerLink]="['']">
-    Valider et revenir à l'accueil
+   </mat-form-field>
+   <br>
+   <div>
+    <button id="add" class="mesBoutons-valider" (click)="update()" [disabled]="userForm.invalid" [routerLink]="['']">
     </button>
-    <div class="formGroup">
-    <button id="cancel" (click)="dismiss()"  [routerLink]="['']">
-    Annuler et revenir à l'accueil
-    </button></div>
-  </div>
+    </div>
+    <div>
+    <button id="cancel" class="mesBoutons-annuler" (click)="dismiss()"  [routerLink]="['']">
+    </button>
+    </div>
 </form>
 </div>

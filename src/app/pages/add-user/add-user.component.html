@@ -1,19 +1,21 @@
 <a role="button" [routerLink]="['']"> Accueil </a>
-<div style="background-image: linear-gradient(coral , white);font-family: 'Times New Roman', Times, serif;text-align: center"><br><br>
+<div style="background-image: linear-gradient(white, coral , white);font-family: 'Times New Roman', Times, serif;text-align: center"><br><br>
 <H1>Création d'une nouvelle tâche</H1>
 <div style="display: inline-block; border:solid;margin:20pt; text-align: center; background-image: linear-gradient(to right, coral , wheat); border-radius: 5pt;padding-left: 10pt;padding-right: 10pt;padding-top: 10pt">
 <form [formGroup]="userForm">
-  <div class="formGroup">
+  <mat-form-field class="formGroup">
     <input
+    matInput
     type="text"
     id="libelle"
     formControlName="libelle"
     placeholder="Libelle"
+    size="530"
     >
     <div class="errorPlaceHolder" *ngIf="libelle.errors && libelle.touched">
     Le libelle doit faire au moins 3 caractères
     </div>
-  </div>
+  </mat-form-field>
   <div class="formGroup">
     <select
     id="categorie"

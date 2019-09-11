@@ -81,12 +81,19 @@ export class HomeComponent implements OnInit {
      user.isDetailsHidden = !user.isDetailsHidden;
    }
 
+   public masquerTousLesDetails(): void {
+    this.users.forEach(user => {
+      user.isDetailsHidden = false;
+    });
+   }
+
    public receiveUser(user: User) {
      if (user) {
       this.collection.update(this.aUser, user);
       // this.collection.findUser(this.oUser);
 
      }
+     this.masquerTousLesDetails();
     // this.aUser = $event;
     this.aUser = null;
    }
