@@ -1,7 +1,7 @@
 <a role="button" [routerLink]="['']"> Accueil </a>
-<div style="background-image: linear-gradient(white, coral , white);font-family: 'Times New Roman', Times, serif;text-align: center"><br><br>
+<div style="background-color: lightgray;font-family: 'Times New Roman', Times, serif;text-align: center"><br><br>
 <H1>Création d'une nouvelle tâche</H1>
-<div style="display: inline-block; border:solid;margin:20pt; text-align: center; background-image: linear-gradient(to right, coral , wheat); border-radius: 5pt;padding-left: 10pt;padding-right: 10pt;padding-top: 10pt">
+<div style="display: inline-block; border:solid;margin:20pt; text-align: center; background-color: lightgray; border-radius: 5pt;padding-left: 10pt;padding-right: 10pt;padding-top: 10pt">
 <form [formGroup]="userForm">
   <mat-form-field class="formGroup">
     <input
@@ -51,12 +51,13 @@
     <p *ngIf="duree.errors.pattern">On a dit 5 CHIIIIFFFFFFRES !!!!</p>
     </div>
   </div><div class="formGroup">
-    <button id="add" (click)="submit()" [routerLink]="['/add']">
-    Ajouter des missions en chaine
-    </button>
-    <button id="add" (click)="submit()" [routerLink]="['']">
+  <button id="add" (click)="submit()" [routerLink]="['']" title="Ne pas enregistrer les modifications">
     Ajouter et revenir à l'accueil
     </button>
+    <button id="add" (click)="submit()" [routerLink]="['/add']" title="Valider">
+    Ajouter des missions en chaine
+    </button>
+
   </div>
 </form>
 </div>
