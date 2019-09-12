@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
    */
    public remove(user: User): void {
      this.collection.remove(user);
-     this.toastr.success('La tâche ' + user.libelle + ' est supprimée', 'Info');
+     this.toastr.success('La mission ' + user.libelle + ' est validée', 'Bravo !');
    }
 
   /**
@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit {
     */
   public vider(): void {
     this.collection.vider();
-    this.toastr.success('Toutes les tâches sont supprimées', 'Info');
+    this.toastr.success('Toutes les missions sont Validées', 'Bravo !!! ');
   }
 
  /** Toogle the hidden status of the details @return void  */

@@ -1,5 +1,5 @@
 <div class="conteneur">
-<p><i><h2>Vous êtes dans la modification d'une tâche : </h2></i></p>
+<p><i><h2>Vous êtes dans la modification d'une mission : </h2></i></p>
 <form [formGroup]="userForm" *ngIf="userForm">
   <mat-form-field class="example-full-width">
     <input
@@ -7,7 +7,7 @@
     type="text"
     id="libelle"
     formControlName="libelle"
-    placeholder="Nom de la tâche"
+    placeholder="Titre de la mission"
     >
     <div class="errorPlaceHolder" *ngIf="libelle.errors && libelle.touched">
     Le libelle doit faire au moins 3 caractères
@@ -16,10 +16,9 @@
   <br>
   <div>
     <select
-
     id="categorie"
     formControlName="categorie"
-    placeholder="Catégorie de la tâche"
+    placeholder="Catégorie de la mission"
     >
     <option>PRO</option>
     <option>PERSO</option>
@@ -34,7 +33,7 @@
     type="date"
     id="birthDate"
     formControlName="birthDate"
-    placeholder="Date d'échéance de la tâche"
+    placeholder="La mission est prévue pour le :"
     >
    </mat-form-field>
   <mat-form-field>
@@ -43,7 +42,7 @@
     type="text"
     id="duree"
     formControlName="duree"
-    placeholder="Durée en heures"
+    placeholder="Durée de la mission en heures"
     >
     <div class="errorPlaceHolder" *ngIf="duree.errors && duree.touched">
     <p *ngIf="duree.errors.pattern">On a dit 5 CHIIIIFFFFFFRES !!!!</p>
