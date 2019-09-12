@@ -5,24 +5,24 @@
     <!--<app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [hidden]="!hasUser()"></app-update-user>-->
 
 <div style="text-align: left;margin:20pt;
-  text-align: left;background-image: linear-gradient(to right, grey , grey);
+  text-align: left;background-color: lightgray;
   border-radius: 0;
   padding-left: 50pt;
   font-size: 1em;
   border: solid;
-  border-color: grey;
+  border-color: white;
   padding-top: 2pt;" *ngFor="let user of users" (click)="toggleStatus(user)">
     <button id="valid"  (click)="valid(user)"><mat-icon title = "Valider la mission">check_box_outline_blank</mat-icon>
     </button>
 
-  &emsp;&nbsp;&nbsp;<strong>{{ user.libelle}}</strong>
+  &emsp;&nbsp;&nbsp;<strong>{{ user.libelle}}</strong> [ {{ user.birthDate | age }} ]
 <address [hidden]="!user.isDetailsHidden">
 <ul id = "detail">
   <li><strong>{{ user.categorie | uppercase }}</strong></li>
   <li> Durée en heures : {{ user.duree}}</li>
-  <li> échoit le : {{ user.birthDate | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }} [ {{ user.birthDate | age }} ]</li>
+  <li> échoit le : {{ user.birthDate | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}</li>
   <!-- : {format: 'month'}-->
-  <div style="text-align: right;padding-right: 10px;background-image: linear-gradient(to right, grey , grey);">
+  <div style="text-align: right;padding-right: 10px;">
    <button class="button-update" id="update" (click)="loadFormFor(user)">
     <mat-icon title = "Modifier">edit</mat-icon>
     </button>

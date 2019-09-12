@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
     this.nbValid = this.mesCompteurs.getNbValid();
     this.nbSuppr = this.mesCompteurs.getNbSuppr();
     this.nbEnCours = this.mesCompteurs.getNbEnCours();
+
     console.log('Nb Valid ' + this.nbValid + ' Nb En Cours ' + this.nbEnCours + ' Nb Suppr ' + this.nbSuppr);
   }
 

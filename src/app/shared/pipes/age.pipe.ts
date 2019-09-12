@@ -33,7 +33,7 @@ export class AgePipe implements PipeTransform {
         theAge = today.diff(birthDate, 'day');
         unit = ' jour(s) avant l\'échéance';
         if (theAge === 0) {
-          unit = 'C\'est le jour de l\'échéance';
+          unit = 'A réaliser aujourd\'hui';
           return unit;
         }
         if (theAge < 0) {

@@ -51,11 +51,12 @@
    </mat-form-field>
    <br>
    <div class="example-button-row">
-    <button id="add" class="mesBoutons-valider" (click)="update()" [disabled]="userForm.invalid" [routerLink]="['']"><mat-icon>done</mat-icon>
+   <button id="cancel" class="mesBoutons-annuler" (click)="dismiss()"  [routerLink]="['']" title = "Ne pas enregistrer les modifications"><mat-icon>restore</mat-icon>
     </button>
-    <button id="cancel" class="mesBoutons-annuler" (click)="dismiss()"  [routerLink]="['']"><mat-icon>restore</mat-icon>
+
+    <button id="add" class="mesBoutons-valider" (click)="update()" [disabled]="userForm.invalid" [routerLink]="['']" title = "Valider"><mat-icon>done</mat-icon>
     </button>
-    </div>
+</div>
     <br>
 </form>
 </div>
