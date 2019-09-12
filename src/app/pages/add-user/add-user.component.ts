@@ -97,7 +97,8 @@ public get duree(): AbstractControl {
     // Second... (special thx for Felice) persist this user into persistent object
       this.collection.add(brandNewUser);
 
-      const nouveauxCompteurs: Cpt = new Cpt();
+      this.mesCompteurs.ajoutMission();
+
       this.toastr.success('La tâche ' + brandNewUser.libelle + ' est créée', 'Info');
 
       this.libelle.reset();
