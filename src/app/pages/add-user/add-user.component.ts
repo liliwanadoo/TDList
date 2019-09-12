@@ -5,6 +5,8 @@ import { BirthDateValidatorService } from 'src/app/shared/services/birth-date-va
 import { UserCollection } from 'src/app/models/user-collection';
 import { User } from 'src/app/models/user';
 import { ToastrService } from 'ngx-toastr';
+import { Compteur } from 'src/app/models/compteur';
+import { Cpt } from 'src/app/models/cpt';
 
 
 @Component({
@@ -37,7 +39,8 @@ export class AddUserComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private birthDateValidator: BirthDateValidatorService,
               private collection: UserCollection,
-              private toastr: ToastrService
+              private toastr: ToastrService,
+              private mesCompteurs: Compteur
               ) { }
 /**
  * Controls getter
@@ -93,6 +96,8 @@ public get duree(): AbstractControl {
 
     // Second... (special thx for Felice) persist this user into persistent object
       this.collection.add(brandNewUser);
+
+      const nouveauxCompteurs: Cpt = new Cpt();
       this.toastr.success('La tâche ' + brandNewUser.libelle + ' est créée', 'Info');
 
       this.libelle.reset();

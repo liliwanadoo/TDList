@@ -25,4 +25,8 @@ export class LocalStorageService {
   public vider(): void {
     localStorage.clear();
   }
+
+  public NbMissions(): any {
+    return JSON.parse(localStorage.getItem(localStorage.key(1)));
+  }
 }

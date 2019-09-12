@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
    ngOnInit(): void {
      this.users = this.collection.getCollection();
      // or... this users = this.collection.users;
+     this.masquerTousLesDetails();
    }
 
   /**

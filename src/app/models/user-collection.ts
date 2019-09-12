@@ -42,8 +42,8 @@ public findUser(user: User) {
         // Gets the index value of "User" in the array
         const index: number = this._users.indexOf(oldUser, 0);
         console.log('mon index ancien ' + index);
-        const new_index: number = this._users.indexOf(newUser, 0);
-        console.log('mon nouvel index ' + new_index);
+        const newIndex: number = this._users.indexOf(newUser, 0);
+        console.log('mon nouvel index ' + newIndex);
 
         // If found (index <> -1)
         if (index !== -1) {
