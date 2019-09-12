@@ -107,6 +107,11 @@ export class HomeComponent implements OnInit {
 
  /** Toogle the hidden status of the details @return void  */
    public toggleStatus(user: User): void {
+     if (user.isDetailsHidden === true) {
+        user.detailsColor = 'grey';
+     } else {
+      user.detailsColor = 'white';
+     }
      user.isDetailsHidden = !user.isDetailsHidden;
    }
 

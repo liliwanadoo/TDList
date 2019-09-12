@@ -32,9 +32,20 @@ export class User {
   public get isDetailsHidden(): boolean {
     return this._isDetailsHidden;
   }
+
   public set isDetailsHidden(value: boolean) {
     this._isDetailsHidden = value;
   }
+
+  private _detailsColor: string;
+  public get detailsColor(): string {
+    return this._detailsColor;
+  }
+
+  public set detailsColor(value: string) {
+    this._detailsColor = value;
+  }
+
 
   public transform(user: any): User {
     Object.assign(this, user);

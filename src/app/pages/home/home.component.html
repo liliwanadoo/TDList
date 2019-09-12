@@ -1,4 +1,4 @@
-<div class="div-haut" style="text-align:center"><br><br>
+<div class="div-haut" style="text-align:center;">
 <H1>Bienvenue, nous sommes le {{ dateDuJour | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}, voici vos missions</H1>
 <!-- Bouton pour afficher le formulaire de mise à jour -->
     <app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [oUser]="aUser" [hidden]="!hasUser()"></app-update-user>
@@ -12,7 +12,7 @@
   border: solid;
   border-color: grey;
   padding-top: 2pt;" *ngFor="let user of users" (click)="toggleStatus(user)">
-    <button id="valid"  (click)="valid(user)"><mat-icon title = "Valider la mission">done_outline</mat-icon>
+    <button id="valid"  (click)="valid(user)"><mat-icon title = "Valider la mission">check_box_outline_blank</mat-icon>
     </button>
 
   &emsp;&nbsp;&nbsp;<strong>{{ user.libelle}}</strong>
@@ -36,7 +36,7 @@
 </address>
 </div>
 </div>
-<div style="text-align:center"><strong> Pour rappel, vous avez déjà effectué {{ nbValid }} missions, vous en avez supprimées {{ nbSuppr }} et vous avez {{ nbEnCours }} missions encore ouvertes
+<div style="text-align:center"><strong> Pour rappel, vous avez déjà effectué {{ nbValid }} mission(s), vous en avez supprimée(s) {{ nbSuppr }} et vous avez {{ nbEnCours }} mission(s) encore ouvertes
 </strong><br><br></div>
 <div style="text-align: left;margin:20pt;
   padding-left: 50pt;">
