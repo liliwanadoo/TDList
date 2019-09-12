@@ -46,55 +46,35 @@ export class Compteur {
    * update a compteur to the collection
    */
   public update(modeMAJ: string): Compteur {
-        // Gets the index value of "compteur" in the array
-        const index: number = this._compteurs.indexOf(this.storage.NbMissions(), 0);
-        let creaCpt: Cpt = new Cpt();
+        console.log(this.storage.NbMissions());
+        const creaCpt: Cpt = new Cpt();
         let nbEnCours = 0;
         let nbValid = 0;
         let nbSuppr = 0;
 
-        console.log('mon index de compteurs ' + index);
+        if (modeMAJ === 'A') {
+            nbEnCours = nbEnCours + 1;
+          }
+        if (modeMAJ === 'V') {
+            nbValid = nbValid + 1;
+            nbEnCours = -1 ;
+          }
+        if (modeMAJ === 'S') {
+            nbSuppr = nbSuppr + 1;
+            nbEnCours = -1;
+          }
+        creaCpt.supprimee = nbSuppr;
+        creaCpt.validee = nbValid;
+        creaCpt.enCours = nbEnCours;
 
-        // If found (index <> -1)
-        if (index !== -1) {
-          creaCpt = this.storage.NbMissions();
-          nbEnCours = creaCpt.enCours;
-          nbValid = creaCpt.validee;
-          nbSuppr = creaCpt.supprimee;
-          if (modeMAJ === 'A') {
-            nbEnCours = nbEnCours + 1;
-          }
-          if (modeMAJ === 'V') {
-            nbValid = nbValid + 1;
-          }
-          if (modeMAJ === 'S') {
-            nbSuppr = nbSuppr + 1;
-          }
-          console.log('mon index ' + index);
-          this._compteurs.splice(index, 1); // Removes the index
-        }
-        if (index === -1) {
-          if (modeMAJ === 'A') {
-            nbEnCours = nbEnCours + 1;
-          }
-          if (modeMAJ === 'V') {
-            nbValid = nbValid + 1;
-          }
-          if (modeMAJ === 'S') {
-            nbSuppr = nbSuppr + 1;
-          }
-          creaCpt.supprimee = nbSuppr;
-          creaCpt.validee = nbValid;
-          creaCpt.enCours = nbEnCours;
-        }
         console.log('mesCompteurs ' + creaCpt.validee + ' ' + creaCpt.enCours + ' ' + creaCpt.supprimee);
         this._compteurs.push(creaCpt);
 
         // Invoke the persistant method
-        // this.storage.set('compteurs', this._compteurs);
+        this.storage.set('compteurs', this._compteurs);
 
-      //return this._compteurs;
-      return this;
+       // return this._compteurs;
+        return this;
   }
 
   public vider(): void {
@@ -134,6 +114,39 @@ export class Compteur {
 
   public get compteurs(): Array<Cpt> {
     return this._compteurs;
+  }
+
+  public getNbValid(): any {
+    let res = 0;
+    const compteurs: Array<any> = this.storage.get('compteurs');
+    if (compteurs.length) {
+     this._compteurs.forEach((compteur: Cpt) => {
+       res = compteur.validee + res;
+     });
+   }
+    return res;
+  }
+
+  public getNbSuppr(): any {
+    let res = 0;
+    const compteurs: Array<any> = this.storage.get('compteurs');
+    if (compteurs.length) {
+     this._compteurs.forEach((compteur: Cpt) => {
+       res = compteur.supprimee + res;
+     });
+   }
+    return res;
+  }
+
+  public getNbEnCours(): any {
+    let res = 0;
+    const compteurs: Array<any> = this.storage.get('compteurs');
+    if (compteurs.length) {
+     this._compteurs.forEach((compteur: Cpt) => {
+       res = compteur.enCours + res;
+     });
+   }
+    return res;
   }
 
 /**
