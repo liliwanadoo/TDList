@@ -2,3 +2,36 @@
   border-radius: 50%;
   background-image: url("../../img/pencil.png");
 }
+
+.div-haut {
+  background-image: linear-gradient(white , white);
+  text-align: center;
+}
+
+.div-user {
+  background-color: rgba(255, 255, 255, 0.637);
+  margin:20pt;
+  text-align: left;
+  background-image: linear-gradient(to right, white , white);
+  border-radius: 5pt;
+  padding-left: 50pt;
+  padding-top: 2pt;
+  font-size: 1em;
+  border: solid;
+  border-color: rgba(255, 255, 255, 0.637);
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+  background-color: rgba(255, 255, 255, 0.637);
+  margin:20pt;
+  text-align: left;
+  background-image: linear-gradient(to right, white , white);
+  border-radius: 5pt;
+  padding-left: 50pt;
+  padding-top: 2pt;
+  font-size: 1em;
+  border: solid;
+  border-color: rgba(255, 255, 255, 0.637);
+}

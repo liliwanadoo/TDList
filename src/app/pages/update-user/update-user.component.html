@@ -23,6 +23,7 @@
     <option>PRO</option>
     <option>PERSO</option>
     </select>
+    <br><br>
     <div class="errorPlaceHolder" *ngIf="categorie.errors && categorie.touched">
     La catégorie doit faire au moins 3 caractères
     </div>
@@ -49,13 +50,12 @@
     </div>
    </mat-form-field>
    <br>
-   <div>
-    <button id="add" class="mesBoutons-valider" (click)="update()" [disabled]="userForm.invalid" [routerLink]="['']">
+   <div class="example-button-row">
+    <button id="add" class="mesBoutons-valider" (click)="update()" [disabled]="userForm.invalid" [routerLink]="['']"><mat-icon>done</mat-icon>
+    </button>
+    <button id="cancel" class="mesBoutons-annuler" (click)="dismiss()"  [routerLink]="['']"><mat-icon>restore</mat-icon>
     </button>
     </div>
-    <div>
-    <button id="cancel" class="mesBoutons-annuler" (click)="dismiss()"  [routerLink]="['']">
-    </button>
-    </div>
+    <br>
 </form>
 </div>

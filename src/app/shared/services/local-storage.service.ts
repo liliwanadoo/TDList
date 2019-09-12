@@ -27,6 +27,7 @@ export class LocalStorageService {
   }
 
   public NbMissions(): any {
-    return JSON.parse(localStorage.getItem(localStorage.key(1)));
+    console.log('Je cherche mes missions ' + localStorage.getItem('compteurs'));
+    return JSON.parse(localStorage.getItem('compteurs'));
   }
 }

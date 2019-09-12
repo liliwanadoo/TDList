@@ -1,23 +1,33 @@
-<div style="background-image: linear-gradient(white,lightblue , white);font-family: 'Times New Roman', Times, serif;text-align: center"><br><br>
-<H1>Bienvenue, nous sommes le {{ dateDuJour | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}, voici vos missions du jour</H1>
+<div class="div-haut" style="text-align:center"><br><br>
+<H1>Bienvenue, nous sommes le {{ dateDuJour | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}, voici vos missions</H1>
 <!-- Bouton pour afficher le formulaire de mise à jour -->
     <app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [oUser]="aUser" [hidden]="!hasUser()"></app-update-user>
     <!--<app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [hidden]="!hasUser()"></app-update-user>-->
 
-<div *ngFor="let user of users" (click)="toggleStatus(user)" style="border:solid;margin:20pt; text-align: left; background-image: linear-gradient(to right, white , white); border-radius: 5pt;padding-left: 10pt;padding-top: 2pt">
-{{ user.libelle}}
+<div style="text-align: left;margin:20pt;
+  text-align: left;background-image: linear-gradient(to right, grey , grey);
+  border-radius: 0;
+  padding-left: 50pt;
+  font-size: 1em;
+  border: solid;
+  border-color: grey;
+  padding-top: 2pt;" *ngFor="let user of users" (click)="toggleStatus(user)">
+    <button id="valid"  (click)="valid(user)"><mat-icon title = "Valider la mission">done_outline</mat-icon>
+    </button>
+
+  &emsp;&nbsp;&nbsp;<strong>{{ user.libelle}}</strong>
 <address [hidden]="!user.isDetailsHidden">
 <ul id = "detail">
   <li><strong>{{ user.categorie | uppercase }}</strong></li>
   <li> Durée en heures : {{ user.duree}}</li>
   <li> échoit le : {{ user.birthDate | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }} [ {{ user.birthDate | age }} ]</li>
   <!-- : {format: 'month'}-->
-  <div style="text-align: right;padding-right: 10px">
-   <button class="button-update" style="border-radius: 50%" id="update" (click)="loadFormFor(user)">
-    Modifier
+  <div style="text-align: right;padding-right: 10px;background-image: linear-gradient(to right, grey , grey);">
+   <button class="button-update" id="update" (click)="loadFormFor(user)">
+    <mat-icon title = "Modifier">edit</mat-icon>
     </button>
-   <button id="remove" style="border-radius: 50%" (click)="remove(user)">
-    Valider la mission
+   <button id="remove"  (click)="remove(user)">
+    <mat-icon title = "Supprimer">delete</mat-icon>
     </button>
       <!-- Bouton pour afficher le formulaire de mise à jour -->
     <!-- <app-update-user></app-update-user> -->
@@ -26,6 +36,10 @@
 </address>
 </div>
 </div>
-<!-- Bouton pour afficher le formulaire de création -->
-<a role="button" [routerLink]="['/add']"> Ajouter une nouvelle mission </a><br><br>
-<button id="remove" [routerLink]="['']" (click)="vider()">Réinitialiser mon compteur de missions</button><br><br>
+<div style="text-align:center"><strong> Pour rappel, vous avez déjà effectué {{ nbValid }} missions, vous en avez supprimées {{ nbSuppr }} et vous avez {{ nbEnCours }} missions encore ouvertes
+</strong><br><br></div>
+<div style="text-align: left;margin:20pt;
+  padding-left: 50pt;">
+<button id="remove" [routerLink]="['/add']"><mat-icon title = "Ajouter">add_circle_outline</mat-icon></button>
+<button id="remove" [routerLink]="['']" (click)="vider()" title = "Tout réinitialiser"><mat-icon>delete_forever</mat-icon></button><br><br>
+</div>

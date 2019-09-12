@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UpdateUserComponent } from '../update-user/update-user.component';
+import { Compteur } from 'src/app/models/compteur';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,14 +16,24 @@ import { UpdateUserComponent } from '../update-user/update-user.component';
 export class HomeComponent implements OnInit {
   public dateDuJour: any;
   userForm: any;
+  public nbValid: number;
+  public nbSuppr: number;
+  public nbEnCours: number;
+
 
   public constructor(
     private collection: UserCollection, private toastr: ToastrService, private http: HttpClient,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private mesCompteurs: Compteur,
+    private router: Router
   ) {
     this.http.get(
       'http://worldclockapi.com/api/json/utc/now'
     ).subscribe((response: any) => {this.dateDuJour = response.currentDateTime; });
+    this.nbValid = this.mesCompteurs.getNbValid();
+    this.nbSuppr = this.mesCompteurs.getNbSuppr();
+    this.nbEnCours = this.mesCompteurs.getNbEnCours();
+    console.log('Nb Valid ' + this.nbValid + ' Nb En Cours ' + this.nbEnCours + ' Nb Suppr ' + this.nbSuppr);
   }
 
   /**
@@ -48,8 +60,19 @@ export class HomeComponent implements OnInit {
    */
    public remove(user: User): void {
      this.collection.remove(user);
-     this.toastr.success('La mission ' + user.libelle + ' est validée', 'Bravo !');
+     this.mesCompteurs.supprMission();
+     this.toastr.success('La mission ' + user.libelle + ' est supprimée', 'Bravo !');
    }
+
+  /**
+   * Invoke repositionary method to remove the 'task'
+   * @param user Task to remove
+   */
+  public valid(user: User): void {
+    this.collection.remove(user);
+    this.mesCompteurs.validMission();
+    this.toastr.success('La mission ' + user.libelle + ' est validée', 'Bravo !');
+  }
 
   /**
    * Check if there is any User to update
@@ -73,8 +96,13 @@ export class HomeComponent implements OnInit {
     * tslint:disable-next-line: jsdoc-format
     */
   public vider(): void {
+    this.users = new Array<User>();
     this.collection.vider();
-    this.toastr.success('Toutes les missions sont Validées', 'Bravo !!! ');
+    this.nbValid = 0;
+    this.nbSuppr = 0;
+    this.nbEnCours = 0;
+    this.toastr.success('Le compteur est réinitialisé', 'C\'est parti !!! ');
+    this.reloadPage();
   }
 
  /** Toogle the hidden status of the details @return void  */
@@ -97,6 +125,10 @@ export class HomeComponent implements OnInit {
      this.masquerTousLesDetails();
     // this.aUser = $event;
     this.aUser = null;
+   }
+
+   public reloadPage() {
+    this.router.navigate(['']);
    }
 
    private _setForm(): void {
