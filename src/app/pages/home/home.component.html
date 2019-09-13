@@ -1,20 +1,20 @@
 <div class="div-haut">
 <H1>Bienvenue, nous sommes le {{ dateDuJour | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}, voici vos missions</H1>
 
-<button id="table" [disabled]="buttonDisabled" [routerLink]="['/add']"><mat-icon title = "Afficher les missions dans un tableau triable">table_chart</mat-icon></button>
+<button id="table" [disabled]="buttonDisabled" [hidden]='true' [routerLink]="['/add']"><mat-icon title = "Afficher les missions dans un tableau triable">table_chart</mat-icon></button>
 <button id="ajout" [disabled]="buttonDisabled" [routerLink]="['/add']"><mat-icon title = "Créer une mission">add_circle_outline</mat-icon></button>
 <button id="ajoutCat" [disabled]="buttonDisabled" [routerLink]="['/addCat']"><mat-icon title = "Créer une catégorie">category</mat-icon></button>
 <button id="remove" [disabled]="buttonDisabled" [routerLink]="['']" (click)="vider()" title = "Tout réinitialiser"><mat-icon>delete_forever</mat-icon></button>
 &nbsp; &nbsp;
 <strong> Pour rappel, vous avez déjà effectué {{ nbValid }} mission(s), vous en avez supprimée(s) {{ nbSuppr }} et vous avez {{ nbEnCours }} mission(s) encore ouvertes
-</strong>
+</strong><br>{{ ageBacklog }}
 
 <!-- Bouton pour afficher le formulaire de mise à jour -->
     <app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [oUser]="aUser" [hidden]="!hasUser()"></app-update-user>
     <!--<app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [hidden]="!hasUser()"></app-update-user>-->
 <br><br>
 
-<div class="div-user" [ngClass] = "{'wrapper' : true, 'active' : user.isDetailsHidden}" *ngFor="let user of users" (click)="toggleStatus(user)">
+<div class="div-user" [ngClass] = "{'wrapper' : true, 'active' : user.isDetailsHidden}" *ngFor="let user of users" (click)="toggleStatus(user)" [ngStyle]="{'color': user.detailsColor}">
     <button id="valid" [disabled]="buttonDisabled" (click)="valid(user)"><mat-icon title = "Valider la mission">check_box_outline_blank</mat-icon>
     </button>
 

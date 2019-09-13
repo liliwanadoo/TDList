@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   public nbSuppr: number;
   public nbEnCours: number;
   public buttonDisabled: boolean = false;
+  public ageBacklog = '';
 
   public constructor(
     private collection: UserCollection, private toastr: ToastrService, private http: HttpClient,
@@ -53,6 +54,7 @@ export class HomeComponent implements OnInit {
      this.users = this.collection.getCollection();
      // or... this users = this.collection.users;
      this.masquerTousLesDetails();
+     this.ageBacklog = this.collection.ageDuBacklog();
    }
 
   /**
@@ -117,17 +119,24 @@ export class HomeComponent implements OnInit {
 
  /** Toogle the hidden status of the details @return void  */
    public toggleStatus(user: User): void {
-     if (user.isDetailsHidden === true) {
-        user.detailsColor = 'grey';
-     } else {
-      user.detailsColor = 'white';
-     }
-     user.isDetailsHidden = !user.isDetailsHidden;
+    user.isDetailsHidden = !user.isDetailsHidden;
    }
 
    public masquerTousLesDetails(): void {
     this.users.forEach(user => {
       user.isDetailsHidden = false;
+      user.detailsColor = 'white';
+      if(user.getRetard() < 0) {
+          user.detailsColor = 'red';
+      }
+      else {
+        if (user.getRetard() === 0) {
+          user.detailsColor = 'orange';
+        }
+        else {
+        user.detailsColor = 'green';
+        }
+      }
     });
    }
 

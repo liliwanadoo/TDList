@@ -1,6 +1,7 @@
 import { User } from './user';
 import { Injectable } from '@angular/core';
 import { LocalStorageService } from '../shared/services/local-storage.service';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -121,5 +122,47 @@ public findUser(user: User) {
       this._users.push(transformedUser.transform(user));
      });
    }
+  }
+
+  private calculRetard(maDate: Date): number {
+      // Fake current date
+      const birthDate: moment.Moment = moment();
+
+      // Convert string date in Moment date (value <=> user.birthDate for example)
+      const today: moment.Moment = moment(maDate);
+
+      // Get difference between two dates with moment
+      let theAge: number = today.diff(birthDate, 'day');
+      console.log('Age de ma mission : ' + theAge);
+
+      if (theAge < 0) {
+        return theAge;
+      }
+      else
+      {
+        return 0;
+      }
+    }
+
+  public ageDuBacklog(): string {
+    const users: Array<any> = this.storage.get('users');
+    let maDate: any;
+    let monTotal = 0;
+    let monRes = '';
+    if (this._users.length) {
+      this._users.forEach((myUser: User) => {
+      maDate = myUser.birthDate;
+      monTotal = monTotal + this.calculRetard(maDate);
+      });
+      if (monTotal === 0) {
+        monRes = 'Le backlog n\'a pas de retard, bravo !';
+      }
+      else
+      {
+        monRes = 'Le backlog a : ' + monTotal + ' jours.';
+      }
+      return monRes;
+   }
+    return 'Le backlog est vide';
   }
 }

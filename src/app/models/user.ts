@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 export class User {
   private _libelle: string;
   public get libelle(): string {
@@ -50,5 +52,19 @@ export class User {
   public transform(user: any): User {
     Object.assign(this, user);
     return this;
+  }
+
+  public getRetard(): number {
+    // Fake current date
+    const birthDate: moment.Moment = moment();
+
+    // Convert string date in Moment date (value <=> user.birthDate for example)
+    const today: moment.Moment = moment(this.birthDate);
+
+    // Get difference between two dates with moment
+    let theAge: number = today.diff(birthDate, 'day');
+    console.log('Age de ma mission : ' + theAge);
+
+    return theAge;
   }
 }
