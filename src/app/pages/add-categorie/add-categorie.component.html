@@ -1,1 +1,33 @@
-<p>add-categorie works!</p>
+<a role="button" [routerLink]="['']"> Accueil </a>
+<div class="div-form"><br><br>
+<H1>Création d'une nouvelle catégorie</H1>
+<div class='div-form'>
+<form [formGroup]="categorieForm">
+  <mat-form-field class="formGroup1">
+    <input
+    matInput
+    type="text"
+    id="libelle"
+    formControlName="libelle"
+    placeholder="Libelle de la catégorie"
+    size="530"
+    >
+    <div class="errorPlaceHolder" *ngIf="libelle.errors && libelle.touched">
+    Le titre de la catégorie doit faire au moins 3 caractères
+    </div>
+  </mat-form-field><br>
+  <div class="formGroup2">
+  <br>
+  <button id="cancel" (click)="dismiss()"  [routerLink]="['']" title = "Ne pas enregistrer les modifications"><mat-icon>restore</mat-icon>
+    </button>
+    &nbsp;
+    <button id="add" (click)="submit()" [routerLink]="['']" title = "Valider et revenir à l'accueil"><mat-icon>add</mat-icon>
+    </button>
+    &nbsp;
+     <button id="addPlus" (click)="submit()" [routerLink]="['/addCat']" title = "Ajouter des catégories à la chaine"><mat-icon>add-box</mat-icon>
+    </button>
+    </div>
+</form>
+</div>
+<br><br>
+</div>

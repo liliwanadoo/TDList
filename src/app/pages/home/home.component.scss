@@ -25,9 +25,10 @@
   padding-left: 50pt;
   padding-top: 2pt;
   font-size: 1em;
-  .wrapper {
+  &.wrapper {
     &.active {
-      background-color: blue;
+      background-color: white;
+      color: black;
     }
   }
 }

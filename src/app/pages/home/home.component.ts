@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   public nbValid: number;
   public nbSuppr: number;
   public nbEnCours: number;
-
+  public buttonDisabled: boolean = false;
 
   public constructor(
     private collection: UserCollection, private toastr: ToastrService, private http: HttpClient,
@@ -63,6 +63,10 @@ export class HomeComponent implements OnInit {
      this.collection.remove(user);
      this.mesCompteurs.supprMission();
      this.toastr.success('La mission ' + user.libelle + ' est supprimée', 'Bravo !');
+     this.nbSuppr = this.nbSuppr + 1;
+     if (this.nbEnCours > 0) {
+     this.nbEnCours = this.nbEnCours - 1;
+     }
    }
 
   /**
@@ -73,6 +77,10 @@ export class HomeComponent implements OnInit {
     this.collection.remove(user);
     this.mesCompteurs.validMission();
     this.toastr.success('La mission ' + user.libelle + ' est validée', 'Bravo !');
+    if (this.nbEnCours > 0) {
+    this.nbEnCours = this.nbEnCours - 1;
+    }
+    this.nbValid = this.nbValid + 1;
   }
 
   /**
@@ -89,6 +97,7 @@ export class HomeComponent implements OnInit {
    */
   public loadFormFor(user: User) {
     this.aUser = user;
+    this.buttonDisabled = true;
     this._setForm();
   }
    /**
@@ -125,12 +134,14 @@ export class HomeComponent implements OnInit {
    public receiveUser(user: User) {
      if (user) {
       this.collection.update(this.aUser, user);
+
       // this.collection.findUser(this.oUser);
 
      }
      this.masquerTousLesDetails();
     // this.aUser = $event;
     this.aUser = null;
+    this.buttonDisabled = false;
    }
 
    public reloadPage() {

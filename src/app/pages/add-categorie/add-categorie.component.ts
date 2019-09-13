@@ -25,7 +25,6 @@ export class AddCategorieComponent implements OnInit {
   /**
    * Form manager handled by ReactiveForms
    */
-
    public categorieForm: FormGroup;
 
    /**
@@ -78,5 +77,4 @@ export class AddCategorieComponent implements OnInit {
 
     }
   }
-
 }
