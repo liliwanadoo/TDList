@@ -1,17 +1,10 @@
-<div class="div-haut" style="text-align:center;">
+<div class="div-haut">
 <H1>Bienvenue, nous sommes le {{ dateDuJour | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}, voici vos missions</H1>
 <!-- Bouton pour afficher le formulaire de mise à jour -->
     <app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [oUser]="aUser" [hidden]="!hasUser()"></app-update-user>
     <!--<app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [hidden]="!hasUser()"></app-update-user>-->
 
-<div style="text-align: left;margin:20pt;
-  text-align: left;background-color: lightgray;
-  border-radius: 0;
-  padding-left: 50pt;
-  font-size: 1em;
-  border: solid;
-  border-color: white;
-  padding-top: 2pt;" *ngFor="let user of users" (click)="toggleStatus(user)">
+<div class="div-user" [ngClass] = "{'wrapper' : true, 'active' : user.isDetailsHidden}" *ngFor="let user of users" (click)="toggleStatus(user)">
     <button id="valid"  (click)="valid(user)"><mat-icon title = "Valider la mission">check_box_outline_blank</mat-icon>
     </button>
 
@@ -19,7 +12,7 @@
 <address [hidden]="!user.isDetailsHidden">
 <ul id = "detail">
   <li><strong>{{ user.categorie | uppercase }}</strong></li>
-  <li> Durée en heures : {{ user.duree}}</li>
+  <li> Points d'effort : {{ user.duree}}</li>
   <li> échoit le : {{ user.birthDate | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}</li>
   <!-- : {format: 'month'}-->
   <div style="text-align: right;padding-right: 10px;">
@@ -36,10 +29,10 @@
 </address>
 </div>
 </div>
-<div style="text-align:center"><strong> Pour rappel, vous avez déjà effectué {{ nbValid }} mission(s), vous en avez supprimée(s) {{ nbSuppr }} et vous avez {{ nbEnCours }} mission(s) encore ouvertes
+<div class="div-haut"><strong> Pour rappel, vous avez déjà effectué {{ nbValid }} mission(s), vous en avez supprimée(s) {{ nbSuppr }} et vous avez {{ nbEnCours }} mission(s) encore ouvertes
 </strong><br><br></div>
-<div style="text-align: left;margin:20pt;
-  padding-left: 50pt;">
-<button id="remove" [routerLink]="['/add']"><mat-icon title = "Ajouter">add_circle_outline</mat-icon></button>
+<div class="div-bas">
+<button id="table" [routerLink]="['/add']"><mat-icon title = "Afficher les missions dans un tableau triable">table_chart</mat-icon></button>
+<button id="ajout" [routerLink]="['/add']"><mat-icon title = "Ajouter">add_circle_outline</mat-icon></button>
 <button id="remove" [routerLink]="['']" (click)="vider()" title = "Tout réinitialiser"><mat-icon>delete_forever</mat-icon></button><br><br>
 </div>

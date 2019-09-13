@@ -1,6 +1,6 @@
 .button-update{
-  border-radius: 50%;
-  background-image: url("../../img/pencil.png");
+  //border-radius: 50%;
+  //background-image: url("../../img/pencil.png");
 }
 
 .div-haut {
@@ -8,30 +8,34 @@
   text-align: center;
 }
 
+.div-bas {
+  background-image: linear-gradient(white , white);
+  text-align: left;
+  margin:20pt;
+  padding-left: 50pt;
+}
+
 .div-user {
-  background-color: rgba(255, 255, 255, 0.637);
+  background-color: lightgray;
   margin:20pt;
   text-align: left;
-  background-image: linear-gradient(to right, white , white);
-  border-radius: 5pt;
   padding-left: 50pt;
   padding-top: 2pt;
   font-size: 1em;
-  border: solid;
-  border-color: rgba(255, 255, 255, 0.637);
+  .wrapper {
+    &.active {
+      background-color: blue;
+    }
+  }
 }
 
 .example-button-row button,
 .example-button-row a {
   margin-right: 8px;
-  background-color: rgba(255, 255, 255, 0.637);
   margin:20pt;
   text-align: left;
-  background-image: linear-gradient(to right, white , white);
   border-radius: 5pt;
   padding-left: 50pt;
   padding-top: 2pt;
   font-size: 1em;
-  border: solid;
-  border-color: rgba(255, 255, 255, 0.637);
 }
