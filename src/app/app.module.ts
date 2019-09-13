@@ -22,6 +22,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { UpdateUserComponent } from './pages/update-user/update-user.component';
 import { MaterialModule } from './shared/ui/material/material.module';
 import { AgePipe } from './shared/pipes/age.pipe';
+import { AddCategorieComponent } from './pages/add-categorie/add-categorie.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AgePipe } from './shared/pipes/age.pipe';
     AddUserComponent,
     HomeComponent,
     UpdateUserComponent,
-    AgePipe
+    AgePipe,
+    AddCategorieComponent
   ],
   imports: [
     BrowserModule,

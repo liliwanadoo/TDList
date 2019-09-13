@@ -83,6 +83,10 @@ public get duree(): AbstractControl {
       ]
     });
   }
+
+  public dismiss(): void {
+    // il ne se passe rien
+  }
   public submit() {
     if (this.userForm.valid) {
       console.log('Yo.....Datas are : ' + JSON.stringify(this.userForm.value));
@@ -99,10 +103,9 @@ public get duree(): AbstractControl {
 
       this.mesCompteurs.ajoutMission();
 
-      this.toastr.success('La tâche ' + brandNewUser.libelle + ' est créée', 'Info');
+      this.toastr.success('La mission ' + brandNewUser.libelle + ' est créée', 'Info');
 
       this.libelle.reset();
-      this.categorie.reset();
       this.birthDate.reset();
       this.duree.reset();
 
