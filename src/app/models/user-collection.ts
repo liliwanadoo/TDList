@@ -54,6 +54,7 @@ public findUser(user: User) {
         }
 
         // Invoke the persistant method
+        this._users.sort();
         this.storage.set('users', this._users);
 
         return this;
@@ -76,6 +77,7 @@ public findUser(user: User) {
       this._users.splice(index, 1); // Removes the index
     }
 
+    this._users.sort();
     // Invoke the persistant method
     this.storage.set('users', this._users);
 
@@ -95,6 +97,7 @@ public findUser(user: User) {
   }
 
   public get users(): Array<User> {
+    this._users.sort();
     return this._users;
   }
 
@@ -121,6 +124,7 @@ public findUser(user: User) {
       const transformedUser: User = new User();
       this._users.push(transformedUser.transform(user));
      });
+     this._users.sort();
    }
   }
 

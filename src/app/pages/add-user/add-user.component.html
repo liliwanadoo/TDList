@@ -56,6 +56,15 @@
     <p *ngIf="duree.errors.pattern">On a dit 5 CHIIIIFFFFFFRES !!!!</p>
     </div>
   </mat-form-field>
+  <mat-form-field class="formGroup2">
+    <input
+    matInput
+    type="text"
+    id="notification"
+    formControlName="notification"
+    placeholder="Choisir un délai de notification "
+    >
+  </mat-form-field>
   <br>
   <button id="cancel" (click)="dismiss()"  [routerLink]="['']" title = "Ne pas enregistrer les modifications"><mat-icon>restore</mat-icon>
     </button>
