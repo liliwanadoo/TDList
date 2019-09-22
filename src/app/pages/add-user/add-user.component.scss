@@ -1,0 +1,34 @@
+form {
+  .formGroup1 {
+    width: 75%;
+    text-align: center;
+    color: white;
+  }
+  .formGroup2 {
+    width: 25%;
+    text-align: center;
+  }
+  .errorPlaceHolder {
+    color: red;
+    font-style: 0.8em;
+  }
+  button{
+   // padding: 1em;
+   // color: white;
+    &.inactive {
+      background: rgba(128,128,128,1);
+      color: white;
+    }
+  }
+}
+  .div-form {
+    //display: inline-block;
+    //border:solid;
+    margin:20pt;
+    text-align: center;
+    background-color: rgb(42, 41, 41);
+    color: white;
+    //padding-left: 10pt;
+    //padding-right: 10pt;
+    //padding-top: 10pt;
+}

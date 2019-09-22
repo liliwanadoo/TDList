@@ -1,0 +1,55 @@
+.button-update {
+    //border-radius: 50%;
+    //background-image: url("../../img/pencil.png");
+}
+
+.div-actions {
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-bottom: 2%;
+    float: left;
+    text-align: left;
+}
+
+.div-haut {
+    background-color: rgb(42, 41, 41);
+    color: white;
+    text-align: center;
+}
+
+.div-bas {
+    background-color: rgb(42, 41, 41);
+    color: white;
+    text-align: left;
+    float: left;
+    margin: 20pt;
+    padding-left: 50pt;
+}
+
+.div-user {
+    background-color: rgb(42, 41, 41);
+    color: white;
+    margin: 20pt;
+    text-align: left;
+    float: left;
+    padding-left: 50pt;
+    padding-top: 2pt;
+    font-size: 1em;
+    &.wrapper {
+        &.active {
+            background-color: white;
+            color: black;
+        }
+    }
+}
+
+.example-button-row button,
+.example-button-row a {
+    margin-right: 8px;
+    margin: 20pt;
+    text-align: left;
+    border-radius: 5pt;
+    padding-left: 50pt;
+    padding-top: 2pt;
+    font-size: 1em;
+}

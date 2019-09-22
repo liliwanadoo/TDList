@@ -1,0 +1,23 @@
+.example-form{
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 50%;
+}
+
+.conteneur {
+  border:solid;
+  margin:20pt;
+  text-align: center;
+  background-color: rgba($color: #2e2b2b, $alpha: 1.0);
+  border-radius: 5pt;
+  flex-wrap: wrap;
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}

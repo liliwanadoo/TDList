@@ -1,0 +1,62 @@
+<div class="conteneur">
+<p><i><h2>Vous êtes dans la modification d'une mission : </h2></i></p>
+<form [formGroup]="userForm" *ngIf="userForm">
+  <mat-form-field class="example-full-width">
+    <input
+    matInput
+    type="text"
+    id="libelle"
+    formControlName="libelle"
+    placeholder="Titre de la mission"
+    >
+    <div class="errorPlaceHolder" *ngIf="libelle.errors && libelle.touched">
+    Le libelle doit faire au moins 3 caractères
+    </div>
+  </mat-form-field>
+  <br>
+  <div>
+    <select
+    id="categorie"
+    formControlName="categorie"
+    placeholder="Catégorie de la mission"
+    >
+    <option>PRO</option>
+    <option>PERSO</option>
+    </select>
+    <br><br>
+    <div class="errorPlaceHolder" *ngIf="categorie.errors && categorie.touched">
+    La catégorie doit faire au moins 3 caractères
+    </div>
+   </div>
+  <mat-form-field>
+    <input
+    matInput
+    type="date"
+    id="birthDate"
+    formControlName="birthDate"
+    placeholder="La mission est prévue pour le :"
+    >
+   </mat-form-field>
+  <mat-form-field>
+    <input
+    matInput
+    type="text"
+    id="duree"
+    formControlName="duree"
+    placeholder="Points d'effort"
+    >
+    <div class="errorPlaceHolder" *ngIf="duree.errors && duree.touched">
+    <p *ngIf="duree.errors.pattern">On a dit 5 CHIIIIFFFFFFRES !!!!</p>
+    </div>
+   </mat-form-field>
+   <br>
+   <div class="example-button-row">
+   <button id="cancel" class="mesBoutons-annuler" (click)="dismiss()"  [routerLink]="['']" title = "Ne pas enregistrer les modifications"><mat-icon>restore</mat-icon>
+    </button>
+
+    <button id="add" class="mesBoutons-valider" (click)="update()" [disabled]="userForm.invalid" [routerLink]="['']" title = "Valider"><mat-icon>done</mat-icon>
+    </button>
+</div>
+    <br>
+</form>
+</div>
