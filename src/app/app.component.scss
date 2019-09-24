@@ -1,12 +1,29 @@
-div{
+@font-face {
+    font-family: 'Vavont';
+    src: url('/fonts/vavont_webfont.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.div-main {
+    background: url("http://d10i0hdaxgvcrd.cloudfront.net/Woodtable-merge.jpg");
+    font-family: Vavont;
+}
+
+.myBody {
+    //background: url("http://d10i0hdaxgvcrd.cloudfront.net/images_hq/book_1562x1180.png");
+}
+
+div {
     //color: rgb(26, 27, 26);
-    color: white;
-    background-color: black;
+    //color: white;
+    //background-color: black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-form{
-  //color: rgb(26, 27, 26);
-  color: white;
-  background-color: black;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+form {
+    //color: rgb(26, 27, 26);
+    //color: white;
+    //background-color: black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

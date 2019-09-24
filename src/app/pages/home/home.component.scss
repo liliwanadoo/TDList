@@ -1,25 +1,100 @@
+@font-face {
+    font-family: 'Vavont';
+    src: url('https://tomorrow.do/fonts/vavont_webfont.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.div-pen {
+    position: absolute;
+    //left: 0%;
+    //top: 10%;
+    z-index: 1;
+    background-image: url("https://d10i0hdaxgvcrd.cloudfront.net/Pen.png");
+    transform: rotate(270deg);
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.div-coffee {
+    position: absolute;
+    left: 73%;
+    z-index: 1;
+    background-image: url("http://d10i0hdaxgvcrd.cloudfront.net/Coffee.png");
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
 .button-update {
     //border-radius: 50%;
     //background-image: url("../../img/pencil.png");
+}
+
+.div-title {
+    margin-left: 20pt;
+    text-align: left;
+    color: black;
+    font-size: 1.5em;
+}
+
+.div-jour {
+    margin-top: 0pt;
+    margin-left: 20pt;
+    text-align: left;
+    color: black;
+    font-size: 1em;
+}
+
+.div-accueil {
+    text-align: center;
+    font-family: Vavont;
 }
 
 .div-actions {
     margin-top: 1%;
     margin-left: 1%;
     margin-bottom: 2%;
-    float: left;
-    text-align: left;
+    float: right;
+    text-align: right;
 }
 
-.div-haut {
-    background-color: rgb(42, 41, 41);
-    color: white;
-    text-align: center;
+.div-today {
+    margin-left: 10%;
+    width: 399px;
+    height: 600px;
+    color: black;
+    //opacity: 0.01;
+    background-image: url(//d10i0hdaxgvcrd.cloudfront.net/images_hq/book_1562x1180.png);
+    background-size: 781px 590px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.div-tomorrow {
+    background: url("http://d10i0hdaxgvcrd.cloudfront.net/images_hq/book_1562x1180.png");
+    //background-color: rgb(42, 41, 41);
+    background-size: 781px 590px;
+    margin-left: 41%;
+    //margin-left: 9px;
+    //opacity: 0.01;
+    background-position: -391px 0px;
+    background-repeat: no-repeat;
+    //width: 399px;
+    width: 392px;
+    height: 600px;
+    -moz-text-size-adjust: auto;
+    //color: white;
+    position: absolute;
+    //text-align: center;
+}
+
+//.div-today ul li {
+//    border-bottom: 1px solid #c5c5c4;
+// }
 .div-bas {
     background-color: rgb(42, 41, 41);
-    color: white;
+    //color: white;
     text-align: left;
     float: left;
     margin: 20pt;
@@ -27,14 +102,17 @@
 }
 
 .div-user {
-    background-color: rgb(42, 41, 41);
-    color: white;
-    margin: 20pt;
+    font-family: 'Vavont';
+    //background-color: rgb(42, 41, 41);
+    //color: white;
+    margin: 13pt;
+    width: 100%;
     text-align: left;
     float: left;
-    padding-left: 50pt;
-    padding-top: 2pt;
+    padding-left: 5pt;
+    //padding-top: 5pt;
     font-size: 1em;
+    border-bottom: 1px solid #c5c5c4;
     &.wrapper {
         &.active {
             background-color: white;
@@ -43,13 +121,18 @@
     }
 }
 
+.material-icons {
+    color: black;
+}
+
 .example-button-row button,
 .example-button-row a {
-    margin-right: 8px;
-    margin: 20pt;
-    text-align: left;
-    border-radius: 5pt;
-    padding-left: 50pt;
-    padding-top: 2pt;
-    font-size: 1em;
+    // margin-right: 8px;
+    //margin: 20pt;
+    text-align: center;
+    color: black;
+    //padding-left: 50pt;
+    //padding-top: 4pt;
+    //font-size: 1em;
+    //toto
 }

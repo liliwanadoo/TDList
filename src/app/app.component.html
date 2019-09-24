@@ -1,8 +1,15 @@
-<head><title>Mes missions</title></head>
-<div style="background-color: white">
-<header>Votre mission si vous l'acceptez....</header>
-<router-outlet></router-outlet>
-<footer>Bonne journée !
-<!--<img [src] = '../assets/img/temps.jpg'>-->
-</footer>
+<head>
+    <title>Mes missions</title>
+</head>
+<div class="div-main" style="background-color: white">
+    <header>Votre mission si vous l'acceptez....</header>
+    <div class="myBody">
+        <router-outlet></router-outlet>
+    </div>
+    <div ng-app="demoApp" ng-controller="demoController" style="min-height:100%">
+        <div mobiscroll-data="events" mobiscroll-eventcalendar="settings"></div>
+    </div>
+    <footer>Bonne journée !
+        <!--<img [src] = '../assets/img/temps.jpg'>-->
+    </footer>
 </div>

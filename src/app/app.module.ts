@@ -1,3 +1,4 @@
+import { MbscModule } from '@mobiscroll/angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -8,8 +9,8 @@ registerLocaleData(localeFr, 'fr');
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,11 +38,14 @@ import { environment } from '../environments/environment';
     AddCategorieComponent,
     LoginComponent
   ],
-  imports: [
+  imports: [ 
+    MbscModule, 
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),

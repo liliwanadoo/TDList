@@ -1,26 +1,43 @@
-<div class="div-haut">
-    <H1>Bienvenue, nous sommes le {{ dateDuJour | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}, voici vos missions</H1>
-    <div class="div-actions col-md-12">
-        <button id="table" [disabled]="buttonDisabled" [hidden]='true' [routerLink]="['/add']"><mat-icon title = "Afficher les missions dans un tableau triable">table_chart</mat-icon></button>
-        <button id="ajout" [disabled]="buttonDisabled" [routerLink]="['/add']"><mat-icon title = "Créer une mission">add_circle_outline</mat-icon></button>
-        <button id="ajoutCat" [disabled]="buttonDisabled" [routerLink]="['/addCat']"><mat-icon title = "Créer une catégorie">category</mat-icon></button>
-        <button id="remove" [disabled]="buttonDisabled" [routerLink]="['']" (click)="vider()" title="Tout réinitialiser"><mat-icon>delete_forever</mat-icon></button>
-    </div>
-    <strong> Pour rappel, vous avez déjà effectué {{ nbValid }} mission(s), vous en avez supprimée(s) {{ nbSuppr }} et vous avez {{ nbEnCours }} mission(s) encore ouvertes
-</strong><br>{{ ageBacklog }}
+<div class="div-accueil">
 
     <!-- Bouton pour afficher le formulaire de mise à jour -->
     <app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [oUser]="aUser" [hidden]="!hasUser()"></app-update-user>
     <!--<app-update-user (updateUserEvent)="receiveUser($event)" [userForm]="userForm" [hidden]="!hasUser()"></app-update-user>-->
+
     <br><br>
+    <div class="div-coffee"></div>
+    <div class="div-tomorrow"><br><br><br><br><br><br> <strong> Pour rappel, vous avez déjà effectué {{ nbValid }} mission(s),<br>vous en avez supprimée(s) {{ nbSuppr }}<br>et vous avez {{ nbEnCours }} mission(s) encore ouvertes
+      </strong><br>{{ ageBacklog }}</div>
+    <div class="div-today">
+        <h6><br></h6>
+        <div class="div-title">Aujourd'hui<br></div>
+        <div class="div-jour">{{ dateDuJour | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}</div>
+        <div class="div-actions col-md-12">
+            <!--<a id="table" [disabled]="buttonDisabled" [hidden]='true' [routerLink]="['/add']">-->
+            <a id="table" [hidden]='true' [routerLink]="['/add']">
+                <mat-icon title="Afficher les missions dans un tableau triable">table_chart</mat-icon>
+            </a>
+            <!--<a id="ajout" [disabled]="buttonDisabled" [routerLink]="['/add']"></a>-->
+            <a id="ajout" [routerLink]="['/add']">
+                <mat-icon title="Créer une mission">add_circle_outline</mat-icon>
+            </a>
+            <!--<a id="ajoutCat" [disabled]="buttonDisabled" [routerLink]="['/addCat']">-->
+            <a id="ajoutCat" [routerLink]="['/addCat']">
+                <mat-icon title="Créer une catégorie">category</mat-icon>
+            </a>
+            <!--<a id="remove" [disabled]="buttonDisabled" [routerLink]="['']" (click)="vider()" title="Tout réinitialiser"></a>-->
+            <a id="remove" [routerLink]="['']" (click)="vider()" title="Tout réinitialiser">
+                <mat-icon>delete_forever</mat-icon>
+            </a>
+        </div>
+        <div class="div-user" [ngClass]="{'wrapper' : true, 'active' : user.isDetailsHidden}" *ngFor="let user of users" (click)="toggleStatus(user)" [ngStyle]="{'color': user.detailsColor}">
+            <button id="valid" [disabled]="buttonDisabled" (click)="valid(user)"><mat-icon title = "Valider la mission">check_box_outline_blank</mat-icon>
+    </button> &emsp;
 
-    <div class="div-user" [ngClass]="{'wrapper' : true, 'active' : user.isDetailsHidden}" *ngFor="let user of users" (click)="toggleStatus(user)" [ngStyle]="{'color': user.detailsColor}">
-        <button id="valid" [disabled]="buttonDisabled" (click)="valid(user)"><mat-icon title = "Valider la mission">check_box_outline_blank</mat-icon>
-    </button> &emsp;&nbsp;&nbsp;
-
-        <strong>{{ user.libelle}}</strong> [ {{ user.birthDate | age }} ]
-        <address [hidden]="!user.isDetailsHidden">
+            <strong>{{ user.libelle}}</strong>
+            <address [hidden]="!user.isDetailsHidden">
 <ul id = "detail">
+  <li>[ {{ user.birthDate | age }} ]</li>
   <li><strong>{{ user.categorie | uppercase }}</strong></li>
   <li> Points d'effort : {{ user.duree}}</li>
   <li> échoit le : {{ user.birthDate | date:'EEEE dd MMM yyyy' : '' : 'fr-FR' }}</li>
@@ -37,6 +54,8 @@
    </div>
 </ul>
 </address>
+        </div>
+        <br>
     </div>
-    <br>
+    <div class="div-pen"></div>
 </div>
